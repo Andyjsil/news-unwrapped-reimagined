@@ -18,7 +18,7 @@ export default function Preferences() {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-green-50 flex items-center justify-center py-12 px-4">
       <div className="w-full max-w-3xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Just a few steps to customize your experience</h1>
@@ -27,7 +27,7 @@ export default function Preferences() {
           </p>
         </div>
         
-        <Card className="p-8">
+        <Card className="p-8 border-purple-100 shadow-md">
           {step === 1 ? (
             <TopicSelector onSelectionComplete={handleTopicsComplete} />
           ) : (
