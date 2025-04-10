@@ -20,8 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				display: ['Playfair Display', 'serif'],
+				sans: ['Georgia', 'serif'],
+				display: ['Times New Roman', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

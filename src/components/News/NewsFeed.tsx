@@ -55,41 +55,37 @@ export default function NewsFeed() {
   
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="article" onValueChange={setFormat}>
+      <Tabs defaultValue="article" onValueChange={setFormat} className="border-b border-gray-200 pb-2">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Your News Feed</h2>
-          <TabsList>
-            <TabsTrigger value="article">Articles</TabsTrigger>
-            <TabsTrigger value="instagram">Instagram</TabsTrigger>
-            <TabsTrigger value="bullets">Bullets</TabsTrigger>
-            <TabsTrigger value="comic">Comics</TabsTrigger>
+          <h2 className="text-2xl font-bold font-display">Your News Feed</h2>
+          <TabsList className="bg-gray-100 rounded-none">
+            <TabsTrigger value="article" className="rounded-none data-[state=active]:bg-black data-[state=active]:text-white">Articles</TabsTrigger>
+            <TabsTrigger value="instagram" className="rounded-none data-[state=active]:bg-black data-[state=active]:text-white">Instagram</TabsTrigger>
+            <TabsTrigger value="bullets" className="rounded-none data-[state=active]:bg-black data-[state=active]:text-white">Bullets</TabsTrigger>
+            <TabsTrigger value="comic" className="rounded-none data-[state=active]:bg-black data-[state=active]:text-white">Comics</TabsTrigger>
           </TabsList>
         </div>
         
-        <TabsContent value="article" className="news-container">
+        <TabsContent value="article" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {mockNews.map((news) => (
-            <Card key={news.id} className="overflow-hidden card-hover">
+            <div key={news.id} className="border-b pb-6">
               <img 
                 src={news.imageUrl} 
                 alt={news.title} 
-                className="h-48 w-full object-cover"
+                className="h-48 w-full object-cover mb-4"
               />
-              <CardHeader>
-                <CardTitle className="text-xl">{news.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">{news.summary}</p>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline">Read more</Button>
-              </CardFooter>
-            </Card>
+              <h3 className="font-display text-xl mb-2 leading-tight">{news.title}</h3>
+              <p className="text-gray-600 mb-4">{news.summary}</p>
+              <Button variant="link" className="text-black pl-0 hover:text-gray-700 hover:underline underline-offset-4">
+                Read more
+              </Button>
+            </div>
           ))}
         </TabsContent>
         
         <TabsContent value="instagram" className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {mockNews.map((news) => (
-            <div key={news.id} className="format-instagram card-hover">
+            <div key={news.id} className="border shadow-sm">
               <div className="p-2 border-b flex items-center">
                 <div className="w-8 h-8 rounded-full bg-gray-200 mr-2"></div>
                 <div className="text-sm font-medium">NewsUnwrap</div>
@@ -100,7 +96,7 @@ export default function NewsFeed() {
                 className="w-full aspect-square object-cover"
               />
               <div className="p-4">
-                <h3 className="font-bold mb-2">{news.title}</h3>
+                <h3 className="font-bold mb-2 font-display">{news.title}</h3>
                 <p className="text-sm text-gray-600">{news.summary}</p>
               </div>
             </div>
@@ -109,59 +105,55 @@ export default function NewsFeed() {
         
         <TabsContent value="bullets">
           {mockNews.map((news) => (
-            <Card key={news.id} className="mb-4 card-hover">
-              <CardHeader>
-                <CardTitle className="text-xl">{news.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="list-disc pl-5 space-y-2">
-                  <li>Key point about the {news.title.toLowerCase()}</li>
-                  <li>{news.summary}</li>
-                  <li>Additional important information related to this news</li>
-                  <li>Expert opinions and reactions</li>
-                  <li>What happens next</li>
-                </ul>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" size="sm">Expand</Button>
-              </CardFooter>
-            </Card>
+            <div key={news.id} className="mb-8 border-b pb-6">
+              <h3 className="text-xl font-display mb-3">{news.title}</h3>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>Key point about the {news.title.toLowerCase()}</li>
+                <li>{news.summary}</li>
+                <li>Additional important information related to this news</li>
+                <li>Expert opinions and reactions</li>
+                <li>What happens next</li>
+              </ul>
+              <Button variant="link" className="text-black mt-2 pl-0 hover:text-gray-700 hover:underline underline-offset-4">
+                Expand
+              </Button>
+            </div>
           ))}
         </TabsContent>
         
         <TabsContent value="comic">
           {mockNews.slice(0, 2).map((news) => (
-            <div key={news.id} className="format-comic mb-8 card-hover">
-              <div className="p-4 bg-blue-100 text-center font-bold">
+            <div key={news.id} className="mb-8 border shadow-sm">
+              <div className="p-4 bg-gray-100 text-center font-bold font-display">
                 {news.title}
               </div>
               <div className="grid grid-cols-2 p-2 gap-2">
-                <div className="border p-2 bg-gray-100 rounded">
-                  <div className="h-32 bg-gray-200 mb-2 rounded flex items-center justify-center">
+                <div className="border p-2 bg-gray-50">
+                  <div className="h-32 bg-gray-100 mb-2 flex items-center justify-center">
                     Comic Panel 1
                   </div>
                   <p className="text-sm">Context of the news story</p>
                 </div>
-                <div className="border p-2 bg-gray-100 rounded">
-                  <div className="h-32 bg-gray-200 mb-2 rounded flex items-center justify-center">
+                <div className="border p-2 bg-gray-50">
+                  <div className="h-32 bg-gray-100 mb-2 flex items-center justify-center">
                     Comic Panel 2
                   </div>
                   <p className="text-sm">Main event described</p>
                 </div>
-                <div className="border p-2 bg-gray-100 rounded">
-                  <div className="h-32 bg-gray-200 mb-2 rounded flex items-center justify-center">
+                <div className="border p-2 bg-gray-50">
+                  <div className="h-32 bg-gray-100 mb-2 flex items-center justify-center">
                     Comic Panel 3
                   </div>
                   <p className="text-sm">Key details and reactions</p>
                 </div>
-                <div className="border p-2 bg-gray-100 rounded">
-                  <div className="h-32 bg-gray-200 mb-2 rounded flex items-center justify-center">
+                <div className="border p-2 bg-gray-50">
+                  <div className="h-32 bg-gray-100 mb-2 flex items-center justify-center">
                     Comic Panel 4
                   </div>
                   <p className="text-sm">Conclusion or impact</p>
                 </div>
               </div>
-              <div className="p-3 bg-gray-50 text-center text-sm">
+              <div className="p-3 bg-gray-50 text-center text-sm italic">
                 Based on: {news.summary}
               </div>
             </div>
