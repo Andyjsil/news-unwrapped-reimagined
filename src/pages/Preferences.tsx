@@ -18,16 +18,20 @@ export default function Preferences() {
   };
   
   return (
-    <div className="min-h-screen bg-green-50 flex items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-green-50 flex items-center justify-center py-12 px-4 bg-[url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80')] bg-cover bg-fixed bg-center">
       <div className="w-full max-w-3xl">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold">Just a few steps to customize your experience</h1>
-          <p className="text-gray-500 mt-2">
-            Step {step} of 2
+        <div className="text-center mb-8 glass py-8 px-6">
+          <h1 className="text-3xl font-display">Just a few steps to customize your experience</h1>
+          <div className="decorative-line max-w-xs mx-auto my-4"></div>
+          <p className="text-gray-500 mt-2 flex items-center justify-center">
+            <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-medium mr-2">
+              {step}
+            </span>
+            <span>of 2</span>
           </p>
         </div>
         
-        <Card className="p-8 border-purple-100 shadow-md">
+        <Card className="p-8 border-purple-100 shadow-card glass">
           {step === 1 ? (
             <TopicSelector onSelectionComplete={handleTopicsComplete} />
           ) : (
